@@ -11,7 +11,7 @@ class DiseniosApp extends StatelessWidget {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Diseños Adv',
-      home: PinterestPage(),
+      home: EmergencyPage(),
     );
   }
 }
