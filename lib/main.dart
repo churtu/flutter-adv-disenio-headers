@@ -1,17 +1,17 @@
-import 'package:adv_disenios/src/pages/pages.dart';
 import 'package:flutter/material.dart';
+import 'package:adv_disenios/src/pages/pages.dart';
 
-void main() => runApp(const MyApp());
+void main() => runApp(const DiseniosApp());
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class DiseniosApp extends StatelessWidget {
+  const DiseniosApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Material App',
-      home: GraficasCircularesPage(),
+      title: 'Diseños Adv',
+      home: SlideShowPage(),
     );
   }
 }
