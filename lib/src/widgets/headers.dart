@@ -10,7 +10,7 @@ class HeaderCuadrado extends StatelessWidget {
     return Container(
       height: 300,
       color: const Color(0xff615aab),
-      child: Center(child: Text('hoal')),
+      child: const Center(child: Text('hoal')),
     );
   }
 }

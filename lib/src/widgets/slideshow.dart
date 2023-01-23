@@ -163,35 +163,15 @@ class _Slide extends StatelessWidget {
 
 class _SliderProvider with ChangeNotifier{
   double _currentPageIndex = 0;
-  Color _primaryColor = Colors.blue;
-  Color _secondaryColor = Colors.grey;
-  double _bulletPrimarySize = 12;
-  double _bulletSecondarySize = 12;
+  Color primaryColor = Colors.blue;
+  Color secondaryColor = Colors.grey;
+  double bulletPrimarySize = 12;
+  double bulletSecondarySize = 12;
 
   double get currentPageIndex => _currentPageIndex;
-  Color get primaryColor => _primaryColor;
-  Color get secondaryColor => _secondaryColor;
-  double get bulletPrimarySize => _bulletPrimarySize;
-  double get bulletSecondarySize => _bulletSecondarySize;
-
+  
   set currentPageIndex(double currentPageIndex) {
     _currentPageIndex = currentPageIndex;
     notifyListeners();
-  }
-
-  set primaryColor(Color primaryColor){
-    _primaryColor = primaryColor;
-  }
-
-  set secondaryColor(Color secondaryColor){
-    _secondaryColor = secondaryColor;
-  }
-
-  set bulletPrimarySize(double bulletPrimarySize){
-    _bulletPrimarySize = bulletPrimarySize;
-  }
-  
-  set bulletSecondarySize(double bulletSecondarySize){
-    _bulletSecondarySize = bulletSecondarySize;
   }
 }

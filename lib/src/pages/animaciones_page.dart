@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'dart:math' as Math;
+import 'dart:math' as math;
 class AnimacionesPage extends StatelessWidget {
    
   const AnimacionesPage({Key? key}) : super(key: key);
@@ -35,14 +35,13 @@ class _CuadradoAnimadoState extends State<_CuadradoAnimado> with SingleTickerPro
       duration: const Duration(milliseconds: 4000 )
     );
 
-    rotacion = Tween(begin: 0.0, end: 2 * Math.pi).animate(CurvedAnimation(parent: controller, curve: Curves.easeOut));
+    rotacion = Tween(begin: 0.0, end: 2 * math.pi).animate(CurvedAnimation(parent: controller, curve: Curves.easeOut));
     opacidad = Tween(begin: 0.1, end: 1.0).animate(CurvedAnimation(parent: controller, curve: const Interval(0,.25, curve: Curves.easeOut)));
     opacidadOut = Tween(begin: 0.0, end: 1.0).animate(CurvedAnimation(parent: controller, curve: const Interval(.75,1, curve: Curves.easeOut)));
     moverDerecha = Tween(begin: 0.0, end: 200.0).animate(CurvedAnimation(parent: controller, curve: Curves.easeOut));
     agrandar = Tween(begin: 0.0, end: 1.0).animate(CurvedAnimation(parent: controller, curve: Curves.easeOut));
 
-    controller.addListener(() {
-      print(controller.status);    
+    controller.addListener(() {  
       if(controller.status == AnimationStatus.completed){
         controller.repeat();
       }
@@ -64,8 +63,6 @@ class _CuadradoAnimadoState extends State<_CuadradoAnimado> with SingleTickerPro
       animation: controller, 
       child: _Cuadrado(),
       builder: (context, child) {
-
-        print(opacidad.status);
 
         return Transform.translate(
           offset: Offset(moverDerecha.value, 0),
