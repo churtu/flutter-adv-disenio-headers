@@ -1,4 +1,5 @@
 
+export 'package:adv_disenios/src/pages/launcher_page.dart';
 export 'package:adv_disenios/src/pages/animaciones_page.dart';
 export 'package:adv_disenios/src/pages/emergency_page.dart';
 export 'package:adv_disenios/src/pages/graficas_circulares_page.dart';

@@ -1,17 +1,38 @@
+import 'package:adv_disenios/src/routes/routes.dart';
+import 'package:adv_disenios/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:adv_disenios/src/pages/pages.dart';
+import 'package:provider/provider.dart';
 
-void main() => runApp(const DiseniosApp());
+void main() => runApp( const AppState() );
+
+class AppState extends StatelessWidget {
+  const AppState({super.key});
+  @override
+  Widget build(BuildContext context) {
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (_) => AppTheme(CurrentAppTheme.dark)
+        )
+      ],
+      child: const DiseniosApp(),
+    );
+  }
+}
 
 class DiseniosApp extends StatelessWidget {
   const DiseniosApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    final appTheme = Provider.of<AppTheme>(context);
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Diseños Adv',
-      home: SliverListPage(),
+      initialRoute: AppRouter.initialRoute,
+      routes: AppRouter.getAppRoutes(),
+      theme: appTheme.currentTheme,
     );
   }
 }

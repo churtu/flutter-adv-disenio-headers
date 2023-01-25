@@ -1,5 +1,7 @@
 import 'package:adv_disenios/src/widgets/widgets.dart';
+import 'package:adv_disenios/theme/app_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class GraficasCircularesPage extends StatefulWidget {
    
@@ -31,15 +33,15 @@ class _GraficasCircularesPageState extends State<GraficasCircularesPage> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              _CustomRadialProgress(porcentaje: porcentaje, color: Colors.red),
+              _CustomRadialProgress(porcentaje: porcentaje*.5, color: Colors.red),
               _CustomRadialProgress(porcentaje: porcentaje, color: Colors.black),
             ],
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              _CustomRadialProgress(porcentaje: porcentaje, color: Colors.blue),
-              _CustomRadialProgress(porcentaje: porcentaje, color: Colors.deepPurple,),
+              _CustomRadialProgress(porcentaje: porcentaje*1.5, color: Colors.deepPurple,),
+              _CustomRadialProgress(porcentaje: porcentaje*2, color: Colors.blue),
             ],
           ),
         ],
@@ -59,19 +61,20 @@ class _CustomRadialProgress extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final appTheme = Provider.of<AppTheme>(context);
     return SizedBox(
       width: 150,
       height: 150,
       child: RadialProgress(
        porcentaje: porcentaje,
        primaryColor: color,
-       secondaryColor: Colors.grey[300]!,
-       circleStrokeWidth: 20,
-       arcStrokeWidth: 5,
-       gradiente: const LinearGradient(
+       secondaryColor: appTheme.currentTheme.textTheme.bodyText1!.color!,
+       circleStrokeWidth: 4,
+       arcStrokeWidth: 8,
+       gradiente: LinearGradient(
         colors: [
-          Colors.red,
-          Colors.white,
+          color,
+          Colors.deepOrange,
           Colors.blue
         ]
        ),

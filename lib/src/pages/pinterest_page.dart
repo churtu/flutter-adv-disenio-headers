@@ -1,4 +1,5 @@
 import 'package:adv_disenios/src/widgets/widgets.dart';
+import 'package:adv_disenios/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:provider/provider.dart';
@@ -8,6 +9,7 @@ class PinterestPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final appTheme = Provider.of<AppTheme>(context);
     return ChangeNotifierProvider(
       create: (_) => _MenuProvider(),
       child: Scaffold(
@@ -20,6 +22,8 @@ class PinterestPage extends StatelessWidget {
               return Positioned(
                   bottom: 30,
                   child: PinterestMenu(
+                    backgroundColor: appTheme.currentTheme.scaffoldBackgroundColor,
+                    primaryColor: appTheme.currentTheme.colorScheme.secondary,
                     show: menuProvider.show,
                     items: [
                       PinterestButton(
