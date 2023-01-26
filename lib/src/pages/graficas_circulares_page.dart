@@ -62,9 +62,10 @@ class _CustomRadialProgress extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final appTheme = Provider.of<AppTheme>(context);
+    bool isLarge = MediaQuery.of(context).size.height > 500;
     return SizedBox(
-      width: 150,
-      height: 150,
+      width: isLarge ? 150 : 120,
+      height: isLarge ? 150 : 120,
       child: RadialProgress(
        porcentaje: porcentaje,
        primaryColor: color,

@@ -16,22 +16,30 @@ class AppTheme extends ChangeNotifier{
       case CurrentAppTheme.light:
         _isDarkTheme = false;
         _isCustomTheme = false;
-        _currentTheme = ThemeData.light();
+        _currentTheme = ThemeData.light().copyWith(
+          colorScheme: const ColorScheme.light(secondary: Colors.pink)
+        );
         break;
       case CurrentAppTheme.dark:
         _isDarkTheme = true;
         _isCustomTheme = false;
-        _currentTheme = ThemeData.dark();
+        _currentTheme = ThemeData.dark().copyWith(
+          colorScheme: const ColorScheme.dark(secondary: Colors.pink)
+        );
         break;
       case CurrentAppTheme.custom:
         _isDarkTheme = false;
         _isCustomTheme = true;
-        _currentTheme = ThemeData.light();
+        _currentTheme = ThemeData.light().copyWith(
+          colorScheme: const ColorScheme.light(secondary: Colors.pink)
+        );
         break;
       default:
         _isDarkTheme = false;
         _isCustomTheme = false;
-        _currentTheme = ThemeData.light();
+        _currentTheme = ThemeData.light().copyWith(
+          colorScheme: const ColorScheme.light(secondary: Colors.pink)
+        );
     }
   }
   
@@ -41,8 +49,12 @@ class AppTheme extends ChangeNotifier{
     _isDarkTheme = isDarkTheme;
     _isCustomTheme = false;
     _currentTheme = (isDarkTheme)
-      ? ThemeData.dark()
-      : ThemeData.light();
+      ? ThemeData.dark().copyWith(
+          colorScheme: const ColorScheme.light(secondary: Colors.pink)
+        )
+      : ThemeData.light().copyWith(
+          colorScheme: const ColorScheme.light(secondary: Colors.pink)
+        );
     notifyListeners();
   }
 
@@ -58,7 +70,9 @@ class AppTheme extends ChangeNotifier{
         scaffoldBackgroundColor: const Color(0xff16202b),
         textTheme: const TextTheme(bodyText1: TextStyle(color: Colors.white))
       )
-      : ThemeData.light();
+      : ThemeData.light().copyWith(
+          colorScheme: const ColorScheme.light(secondary: Colors.pink)
+        );
     notifyListeners();
   }
 

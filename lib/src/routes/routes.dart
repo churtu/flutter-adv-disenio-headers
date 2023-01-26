@@ -39,7 +39,13 @@ class AppRouter {
       );
     }
     routes.addAll(
-      { 'launcher': (_) => const LauncherPage()}
+      { 'launcher': (_) => Builder(
+        builder: (context){ 
+          final size = MediaQuery.of(context).size;
+
+          return size.width > 500 ? const LauncherTabletPage() : const LauncherPage();
+        })
+      }
     );
     return routes;
   }

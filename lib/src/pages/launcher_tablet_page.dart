@@ -1,22 +1,40 @@
+import 'package:adv_disenios/src/models/models.dart';
 import 'package:adv_disenios/src/routes/routes.dart';
 import 'package:adv_disenios/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 
-class LauncherPage extends StatelessWidget {
+class LauncherTabletPage extends StatelessWidget {
    
-  const LauncherPage({Key? key}) : super(key: key);
+  const LauncherTabletPage({Key? key}) : super(key: key);
   
   @override
   Widget build(BuildContext context) {
     final appTheme = Provider.of<AppTheme>(context);
+    final layoutModel = Provider.of<LayoutModel>(context);
     return Scaffold(
       appBar: AppBar(
         backgroundColor: appTheme.currentTheme.colorScheme.secondary,
-        title: const Text('Diseños avanzados Telefono')
+        title: const Text('Diseños avanzados - Tablet')
       ),
-      body: const Center(child: Text('Launcher Page')),
+      body: Row(
+        children: [
+          SizedBox(
+            width: 300,
+            height: double.infinity,
+            child: _ListaOpciones(),
+          ),
+          Container(
+            width: 1,
+            height: double.infinity,
+            color: appTheme.isDarkTheme ? Colors.grey : appTheme.currentTheme.colorScheme.secondary,
+          ),
+          Expanded(
+            child: layoutModel.currentPage,
+          )
+        ],
+      ),
       drawer: _MenuPrincipal(),
     );
   }
@@ -84,6 +102,7 @@ class _ListaOpciones extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final layoutModel = Provider.of<LayoutModel>(context);
     final appTheme = Provider.of<AppTheme>(context);
     return ListView.separated(
       physics: const BouncingScrollPhysics(),
@@ -100,9 +119,7 @@ class _ListaOpciones extends StatelessWidget {
           color: appTheme.currentTheme.colorScheme.secondary,
         ),
         onTap: () {
-          Navigator.push(context, MaterialPageRoute(
-            builder: (context) => AppRouter.appRoutes[index].page,
-          ));
+          layoutModel.currentPage = AppRouter.appRoutes[index].page;
         },
       ),
     );

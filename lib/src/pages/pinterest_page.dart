@@ -86,10 +86,11 @@ class _PinterestGridState extends State<_PinterestGrid> {
 
   @override
   Widget build(BuildContext context) {
+    bool isLarge = MediaQuery.of(context).size.height > 500;
     return MasonryGridView.count(
       physics: const BouncingScrollPhysics(),
       controller: _scrollController,
-      crossAxisCount: 2,
+      crossAxisCount: isLarge ? 2 : 3,
       mainAxisSpacing: 4,
       crossAxisSpacing: 4,
       itemCount: items.length,

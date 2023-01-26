@@ -1,7 +1,7 @@
+import 'package:adv_disenios/src/models/models.dart';
 import 'package:adv_disenios/src/routes/routes.dart';
 import 'package:adv_disenios/theme/app_theme.dart';
 import 'package:flutter/material.dart';
-import 'package:adv_disenios/src/pages/pages.dart';
 import 'package:provider/provider.dart';
 
 void main() => runApp( const AppState() );
@@ -14,6 +14,9 @@ class AppState extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(
           create: (_) => AppTheme(CurrentAppTheme.dark)
+        ),
+        ChangeNotifierProvider(
+          create: (_) => LayoutModel()
         )
       ],
       child: const DiseniosApp(),

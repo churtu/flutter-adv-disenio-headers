@@ -32,15 +32,18 @@ class EmergencyPage extends StatelessWidget {
       _ItemButton( FontAwesomeIcons.masksTheater, 'Theft / Harrasement', const Color(0xffF2D572), const Color(0xffE06AA3) ),
       _ItemButton( FontAwesomeIcons.personBiking, 'Awards', const Color(0xff317183), const Color(0xff46997D) ),
     ];
+
+    bool isLarge = MediaQuery.of(context).size.height > 500;
+
     return Scaffold(
       body: Stack(
         children: [
           Container(
-            margin: const EdgeInsets.only(top:200 ),
+            margin: EdgeInsets.only(top: isLarge ? 220 : 10 ),
             child: ListView(
               physics: const BouncingScrollPhysics(),
               children: [
-                const SizedBox(height: 80),
+                if(isLarge) const SizedBox(height: 80),
                 ...items.map((btn) => FadeInLeft(
                   child: EmergencyBtn(
                     text: btn.text, 
@@ -54,7 +57,7 @@ class EmergencyPage extends StatelessWidget {
               ],
             ),
           ),
-          _Header(),
+          if(isLarge) _Header(),
         ],
       ),
     );
